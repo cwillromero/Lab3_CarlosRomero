@@ -15,21 +15,8 @@ import javax.swing.JOptionPane;
 public class Lab3_CarlosRomero {
     static ArrayList <Locales> locales=new ArrayList();
     static ArrayList <Persona> personas=new ArrayList();
-    public static void main(String[] args) {
-        /*String inicio="";
-        while(!inicio.equals("Salir")){
-        String[] z={"Iniciar Seción","Salir"};
-        inicio= (String) JOptionPane.showInputDialog(null, "Inicie Sesión","Centro Comercial", JOptionPane.DEFAULT_OPTION, null, z, z[0]);
-        String u=JOptionPane.showInputDialog("Ingrese el Usuario:\n(Usuario: programacionII)","programacionII");
-        while(!u.equals("programacionII")){
-            u=JOptionPane.showInputDialog("Usuario Incorrecto!\nIngrese el Usuario:\n(Usuario: programacionII)","programacionII");
-        }
-        String c=JOptionPane.showInputDialog("Ingrese la Contraseña:\n(Contraseña:lab32017)","lab32017");
-        while(!c.equals("lab32017")){
-            c=JOptionPane.showInputDialog("Contraseña Incorrecta!\nIngrese la Contraseña:\n(Contraseña:lab32017)","lab32017");
-        }*/
+    public static void main(String[] args) {     
         Menu();
-        //}
     }
     
     public static void Menu(){
@@ -142,6 +129,8 @@ public class Lab3_CarlosRomero {
         personas.get(personas.size()-1).setID(ID);
         String FechaNacimiento=JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento:","DD/MM/AAAA"); 
         personas.get(personas.size()-1).setFechaNacimiento(FechaNacimiento);
+        double Dinero=Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de dinero", "0.00"));
+        ((Clientes) personas.get(personas.size()-1)).setDinero(Dinero);
         }
     }
         
@@ -156,19 +145,101 @@ public class Lab3_CarlosRomero {
             JOptionPane.showMessageDialog(null, "Esa Posición no existe!");
             Pos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posición a eliminar:"));
         }
-        String tipo="";
-        String[] t={"Empleado","Cliente"};
-        tipo=(String) JOptionPane.showInputDialog(null, "Seleccion un tipo de persona:","Modificar", JOptionPane.DEFAULT_OPTION, null, t, t[0]);
-        if(tipo.equals(t[0])){
-            String[] m={"Nombre","Password","Correo","Nombre Completo","ID","Fecha de Nacimiento","Horario","Numero de Productos Vendidos"};
+        if(personas.get(Pos).toString().contains("Empleado")){
+            String[] m={"Username","Password","Correo","Nombre Completo","ID","Fecha de Nacimiento","Horario","Numero de Productos Vendidos"};
             String p=(String) JOptionPane.showInputDialog(null, "Seleccion una opcion:","Modificar", JOptionPane.DEFAULT_OPTION, null, m, m[0]);
-            
+            if(p.equals(m[0])){
+                String Username=JOptionPane.showInputDialog("Ingrese el Username Nuevo:");
+                for (int i = 0; i < personas.size()-1; i++) {
+                        while(((Persona) personas.get(i)).getUsername().equals(Username)){
+                        JOptionPane.showMessageDialog(null,"Username Repetido!");
+                        Username=JOptionPane.showInputDialog("Ingrese el Username:");
+                    }
+                }
+                personas.get(personas.size()-1).setUsername(Username);
+            }
+            if(p.equals(m[1])){
+                String Password=JOptionPane.showInputDialog("Ingrese el Password:"); 
+                personas.get(personas.size()-1).setPassword(Password);
+            }
+            if(p.equals(m[2])){
+                String Correo=JOptionPane.showInputDialog("Ingrese el Correo:");  
+                personas.get(personas.size()-1).setCorreo(Correo);
+            }
+            if(p.equals(m[3])){
+                String NombreCompleto=JOptionPane.showInputDialog("Ingrese Nombre Completo:");  
+                personas.get(personas.size()-1).setNombreCompleto(NombreCompleto);
+            }
+            if(p.equals(m[4])){
+                String ID=JOptionPane.showInputDialog("Ingrese ID:");
+                for (int i = 0; i < personas.size()-1; i++) {
+                        while(((Persona) personas.get(i)).getID().equals(ID)){
+                        JOptionPane.showMessageDialog(null,"ID Repetido!");
+                        ID=JOptionPane.showInputDialog("Ingrese el ID:");
+                    }
+                }
+                personas.get(personas.size()-1).setID(ID);
+            }
+            if(p.equals(m[5])){
+                String FechaNacimiento=JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento:","DD/MM/AAAA"); 
+                personas.get(personas.size()-1).setFechaNacimiento(FechaNacimiento);
+            }
+            if(p.equals(m[6])){
+                String Horario=JOptionPane.showInputDialog("Ingrese el Horraio De Trabajo:","00:00-00:00");
+                ((Empleados) personas.get(personas.size()-1)).setHorario(Horario);
+            }
+            if(p.equals(m[7])){
+                int NumeroDeProductosVendidos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero de Productos Vendidos:","0"));
+                ((Empleados) personas.get(personas.size()-1)).setNumeroDeProductosVendidos(NumeroDeProductosVendidos);
+            }
         }else{
-            
+            String[] m={"Username","Password","Correo","Nombre Completo","ID","Fecha de Nacimiento","Dinero"};
+            String p=(String) JOptionPane.showInputDialog(null, "Seleccion una opcion:","Modificar", JOptionPane.DEFAULT_OPTION, null, m, m[0]);
+            if(p.equals(m[0])){
+                String Username=JOptionPane.showInputDialog("Ingrese el Username Nuevo:");
+                for (int i = 0; i < personas.size()-1; i++) {
+                        while(((Persona) personas.get(i)).getUsername().equals(Username)){
+                        JOptionPane.showMessageDialog(null,"Username Repetido!");
+                        Username=JOptionPane.showInputDialog("Ingrese el Username:");
+                    }
+                }
+                personas.get(personas.size()-1).setUsername(Username);
+            }
+            if(p.equals(m[1])){
+                String Password=JOptionPane.showInputDialog("Ingrese el Password:"); 
+                personas.get(personas.size()-1).setPassword(Password);
+            }
+            if(p.equals(m[2])){
+                String Correo=JOptionPane.showInputDialog("Ingrese el Correo:");  
+                personas.get(personas.size()-1).setCorreo(Correo);
+            }
+            if(p.equals(m[3])){
+                String NombreCompleto=JOptionPane.showInputDialog("Ingrese Nombre Completo:");  
+                personas.get(personas.size()-1).setNombreCompleto(NombreCompleto);
+            }
+            if(p.equals(m[4])){
+                String ID=JOptionPane.showInputDialog("Ingrese ID:");
+                for (int i = 0; i < personas.size()-1; i++) {
+                        while(((Persona) personas.get(i)).getID().equals(ID)){
+                        JOptionPane.showMessageDialog(null,"ID Repetido!");
+                        ID=JOptionPane.showInputDialog("Ingrese el ID:");
+                    }
+                }
+                personas.get(personas.size()-1).setID(ID);
+            }
+            if(p.equals(m[5])){
+                String FechaNacimiento=JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento:","DD/MM/AAAA"); 
+                personas.get(personas.size()-1).setFechaNacimiento(FechaNacimiento);
+            }
+            if(p.equals(m[6])){
+                double Dinero=Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de dinero", "0.00"));
+                ((Clientes) personas.get(personas.size()-1)).setDinero(Dinero);
+            }
         }
     }
     
     public static void menu(){
+        
         String adminitracion="";
         while(!adminitracion.equals("Salir")){
          String[] z={"Empleados","Clientes","Salir"};

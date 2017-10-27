@@ -239,16 +239,27 @@ public class Lab3_CarlosRomero {
     }
     
     public static void menu(){
-        
         String adminitracion="";
         while(!adminitracion.equals("Salir")){
-         String[] z={"Empleados","Clientes","Salir"};
-         adminitracion=(String) JOptionPane.showInputDialog(null, "Seleccion una opción:","Administración", JOptionPane.DEFAULT_OPTION, null, z, z[0]);
-         if(adminitracion.equals("Empleados")){
-             Empleados();
-         }if(adminitracion.equals("Clientes")){
-             Clientes();
-         }
+         String[] z={"Iniciar Sesión","Salir"};
+         adminitracion=(String) JOptionPane.showInputDialog(null, "Por favor Inicie Sesión:","Menú Administrativo", JOptionPane.DEFAULT_OPTION, null, z, z[0]);
+         if(adminitracion.equals(z[0])){
+             String s="________________________________________Personas________________________________________\n";
+                for (Object t : personas) {
+                    s+=""+personas.indexOf(t)+""+") \n"+t+"\n\n";    
+                }
+                String user=JOptionPane.showInputDialog("Ingrese el Usuario:","will");
+                if(s.contains(user) || user.equals("will")){
+                   String pass=JOptionPane.showInputDialog("Ingrese el Password:","1234");
+                   if(s.contains(pass) || pass.equals("1234")){
+                       
+                   }else{
+                       JOptionPane.showMessageDialog(null, "Password Incorrecto!");
+                   }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Usuario Incorrecto!");
+                }
+            }
         }
     } 
     

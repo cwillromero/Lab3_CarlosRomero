@@ -1,0 +1,58 @@
+package lab3_carlosromero;
+
+import java.util.ArrayList;
+
+    public class Locales {
+        private String Nombre;
+        private int Piso;
+        private ArrayList Produtos=new ArrayList();
+        private String Empleado;
+
+    public Locales() {
+    }
+
+    public Locales(String Nombre, int Piso, String Empleado) {
+        this.Nombre = Nombre;
+        this.Piso = Piso;
+        this.Empleado = Empleado;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public int getPiso() {
+        return Piso;
+    }
+
+    public void setPiso(int Piso) {
+        this.Piso = Piso;
+    }
+
+    public ArrayList<String> getProdutos() {
+        return Produtos;
+    }
+
+    public void setProdutos(ArrayList<String> Produtos) {
+        this.Produtos = Produtos;
+    }
+
+    public String getEmpleado() {
+        return Empleado;
+    }
+
+    public void setEmpleado(String Empleado) {
+        this.Empleado = Empleado;
+    }
+
+    @Override
+    public String toString() {
+        return "Locales:\n" + "Nombre=" + Nombre + ", Piso=" + Piso + ", Empleado=" + Empleado + ", Produtos="+Produtos +"\nTipo ";
+    }
+        
+    
+}

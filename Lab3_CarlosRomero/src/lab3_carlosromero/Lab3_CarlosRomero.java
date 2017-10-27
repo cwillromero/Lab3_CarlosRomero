@@ -54,14 +54,14 @@ public class Lab3_CarlosRomero {
                     modificar();
                 }
             }
-            if(inicio.equals(z[2])){
+            if(inicio.equals(z[3])){
                 if(personas.size()==0){
                     JOptionPane.showMessageDialog(null, "Debe Agregar Personas Primero!");
                 }else{
-                    int Pos=Integer.parseInt(JOptionPane.showInputDialog("Ingese la posición a eliminar:"));
+                    int Pos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posición a eliminar:"));
                     while (Pos>=personas.size()) {
                         JOptionPane.showMessageDialog(null, "Esa Posición no existe!");
-                        Pos=Integer.parseInt(JOptionPane.showInputDialog("Ingese la posición a eliminar:"));
+                        Pos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posición a eliminar:"));
                     }
                     personas.remove(Pos);
                 }
@@ -84,9 +84,9 @@ public class Lab3_CarlosRomero {
     public static void agregar(){
         String tipo="";
         String[] t={"Empleado","Cliente"};
-        tipo=(String) JOptionPane.showInputDialog(null, "Seleccion un tipo de persona:",null, JOptionPane.DEFAULT_OPTION, null, t, t[0]);
+        tipo=(String) JOptionPane.showInputDialog(null, "Seleccion un tipo de persona:","Agregar", JOptionPane.DEFAULT_OPTION, null, t, t[0]);
         if(tipo.equals(t[0])){
-        personas.add(new Clientes());
+        personas.add(new Empleados());
         String Username=JOptionPane.showInputDialog("Ingrese el Username:");
         for (int i = 0; i < personas.size()-1; i++) {
                 while(((Persona) personas.get(i)).getUsername().equals(Username)){
@@ -116,8 +116,8 @@ public class Lab3_CarlosRomero {
             int NumeroDeProductosVendidos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero de Productos Vendidos:","0"));
             ((Empleados) personas.get(personas.size()-1)).setNumeroDeProductosVendidos(NumeroDeProductosVendidos);
         } 
-        if(tipo.equals(t[1])){
-            personas.add(new Empleados());
+        else{
+            personas.add(new Clientes());
         String Username=JOptionPane.showInputDialog("Ingrese el Username:");
         for (int i = 0; i < personas.size()-1; i++) {
                 while(((Persona) personas.get(i)).getUsername().equals(Username)){
@@ -142,12 +142,30 @@ public class Lab3_CarlosRomero {
         personas.get(personas.size()-1).setID(ID);
         String FechaNacimiento=JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento:","DD/MM/AAAA"); 
         personas.get(personas.size()-1).setFechaNacimiento(FechaNacimiento);
-        ArrayList ProductosComprados=new ArrayList();
-        if()
+        }
     }
-    
-    public static void modificar(){
         
+    public static void modificar(){
+        String s="________________________________________Personas________________________________________\n";
+        for (Object t : personas) {
+            s+=""+personas.indexOf(t)+""+") \n"+t+"\n\n";    
+         }
+        System.out.println(s);
+        int Pos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posición a eliminar:"));
+        while (Pos>=personas.size()) {
+            JOptionPane.showMessageDialog(null, "Esa Posición no existe!");
+            Pos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posición a eliminar:"));
+        }
+        String tipo="";
+        String[] t={"Empleado","Cliente"};
+        tipo=(String) JOptionPane.showInputDialog(null, "Seleccion un tipo de persona:","Modificar", JOptionPane.DEFAULT_OPTION, null, t, t[0]);
+        if(tipo.equals(t[0])){
+            String[] m={"Nombre","Password","Correo","Nombre Completo","ID","Fecha de Nacimiento","Horario","Numero de Productos Vendidos"};
+            String p=(String) JOptionPane.showInputDialog(null, "Seleccion una opcion:","Modificar", JOptionPane.DEFAULT_OPTION, null, m, m[0]);
+            
+        }else{
+            
+        }
     }
     
     public static void menu(){

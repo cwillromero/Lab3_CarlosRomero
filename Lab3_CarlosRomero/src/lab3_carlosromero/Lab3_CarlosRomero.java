@@ -28,7 +28,7 @@ public class Lab3_CarlosRomero {
                 if(personas.size()==0){
                     JOptionPane.showMessageDialog(null, "Debe Agregar Personas Primero!");
                 }else{
-                    menu();
+                    MenuAdministrativo();
                 }
             }
             if (inicio.equals(z[1])) {
@@ -238,7 +238,7 @@ public class Lab3_CarlosRomero {
         }
     }
     
-    public static void menu(){
+    public static void MenuAdministrativo(){
         String adminitracion="";
         while(!adminitracion.equals("Salir")){
          String[] z={"Iniciar Sesión","Salir"};
@@ -252,7 +252,13 @@ public class Lab3_CarlosRomero {
                 if(s.contains(user) || user.equals("will")){
                    String pass=JOptionPane.showInputDialog("Ingrese el Password:","1234");
                    if(s.contains(pass) || pass.equals("1234")){
-                       
+                       String[] tipo={"Empleado","Cliente"};
+                       String Tipo=(String) JOptionPane.showInputDialog(null, "Seleccione el Tipo de Persona:","Menú Administrativo", JOptionPane.DEFAULT_OPTION, null, tipo, tipo[0]);
+                       if(Tipo.equals(tipo[0])){
+                           Empleados();
+                       }else{
+                           Clientes();
+                       }
                    }else{
                        JOptionPane.showMessageDialog(null, "Password Incorrecto!");
                    }

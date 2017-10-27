@@ -270,10 +270,50 @@ public class Lab3_CarlosRomero {
     } 
     
     public static void Empleados(){
+        String s="________________________________________Personas________________________________________\n";
+        for (Object t : personas) {
+            s+=""+personas.indexOf(t)+""+") \n"+t+"\n\n";    
+         }
+        System.out.println(s);
         String menu="";
         while(!menu.equals("Salir")){
-            String[] z={"Agregar Locales","Modificar Locales","Salir"};
-            menu=(String) JOptionPane.showInputDialog(null, "Seleccion una opción:","Empleados", JOptionPane.DEFAULT_OPTION, null, z, z[0]);
+            String[] z={"Agregar Locales","Modificar Locales","Listar Locales","Salir"};
+            menu=(String) JOptionPane.showInputDialog(null, "Seleccione una opción:","Locales", JOptionPane.DEFAULT_OPTION, null, z, z[0]);
+            if(menu.equals(z[0])){
+                String Nombre=JOptionPane.showInputDialog("Ingrese el Nombre del Local:");
+                int Piso=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Piso donde esta ubicado el Local")); 
+                String Empleado=JOptionPane.showInputDialog("Ingrese el nombre del Empleado:");
+                while(!s.contains(Empleado)){
+                    JOptionPane.showMessageDialog(null, "Ese empleado no existe!");
+                    Empleado=JOptionPane.showInputDialog("Ingrese el nombre del Empleado:");
+                }
+                int cant=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de Productos a añadir:"));
+                while(cant>0){
+                    String[] product={"Ropa","Juguetes"};
+                    String p=(String) JOptionPane.showInputDialog(null, "Seleccion una opción:","Productos", JOptionPane.DEFAULT_OPTION, null, product, product[0]);
+                    if(p.equals(product[0])){
+                        locales.add(new Locales());
+                        locales.get(locales.size()-1).setNombre(Nombre);
+                        locales.get(locales.size()-1).setPiso(Piso);
+                        locales.get(locales.size()-1).setEmpleado(Empleado);
+                        locales.get(locales.size()).getProdutos().add(new Ropa());
+                        double Precio=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el Precio","0.00"));
+                        locales.get(locales.size()-1).getProdutos().get(locales.get(locales.size()-1).getProdutos().size()-1).setPrecio(Precio);
+                        String Descripcion=JOptionPane.showInputDialog("Ingrese la Descripcion:");
+                        locales.get(locales.size()-1).getProdutos().get(locales.get(locales.size()-1).getProdutos().size()-1).setDescripcion(Descripcion);
+                        String Marca=JOptionPane.showInputDialog("Ingrese la marca");
+                        locales.get(locales.size()-1).getProdutos().get(locales.get(locales.size()-1).getProdutos().size()-1).setMarca(Marca);
+                        double Descuento=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el decuento"));
+                        locales.get(locales.size()-1).getProdutos().get(locales.get(locales.size()-1).getProdutos().size()-1).setDescuento(Descuento);
+                         cant=cant-1;
+                    }else{
+                    
+                }
+                }
+            }
+            if(menu.equals(z[2])){
+                
+            }
         }
     }
     

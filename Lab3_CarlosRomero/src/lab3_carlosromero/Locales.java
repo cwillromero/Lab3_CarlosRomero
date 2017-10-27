@@ -5,7 +5,7 @@ import java.util.ArrayList;
     public class Locales {
         private String Nombre;
         private int Piso;
-        private ArrayList Produtos=new ArrayList();
+        private ArrayList<Productos> Produtos=new ArrayList();
         private String Empleado;
 
     public Locales() {
@@ -33,11 +33,11 @@ import java.util.ArrayList;
         this.Piso = Piso;
     }
 
-    public ArrayList<String> getProdutos() {
+    public ArrayList<Productos> getProdutos() {
         return Produtos;
     }
 
-    public void setProdutos(ArrayList<String> Produtos) {
+    public void setProdutos(ArrayList<Productos> Produtos) {
         this.Produtos = Produtos;
     }
 

@@ -51,7 +51,7 @@ import java.util.ArrayList;
 
     @Override
     public String toString() {
-        return "Locales:\n" + "Nombre=" + Nombre + ", Piso=" + Piso + ", Empleado=" + Empleado + ", Produtos="+Produtos +"\nTipo ";
+        return "Locales:\n" + "Nombre=" + Nombre + ", Piso=" + Piso + ", Empleado=" + Empleado+"\n"+Produtos;
     }
         
     
